@@ -1,9 +1,10 @@
 {
-  "name": "uab-weapp",
+  "name": "@uab/weapp",
   "version": "1.0.0",
   "description": "一个微信小程序组件库",
   "main": "index.js",
   "scripts": {
+    "dev": "node build/dev.mjs",
     "build:lib": "yarn && npx gulp -f build/compiler.js --series buildEs"
   },
   "repository": {
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/uabjs/uab-weapp#readme",
   "devDependencies": {
+    "@vant/cli": "^4.0.0",
     "gulp": "^4.0.2",
     "gulp-insert": "^0.5.0",
     "gulp-less": "^5.0.0",
@@ -27,6 +29,7 @@
     "miniprogram-api-typings": "^3.1.6",
     "miniprogram-ci": "^1.6.1",
     "miniprogram-simulate": "^1.4.2",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "vue": "^3.2.30"
   }
 }

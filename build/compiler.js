@@ -13,7 +13,10 @@ const libDir = path.resolve(__dirname, '../lib');
 const esDir = path.resolve(__dirname, '../dist');
 const src = path.resolve(__dirname, '../packages');
 const esConfig = path.resolve(__dirname, '../tsconfig.json');
+const exampleConfig = path.resolve(__dirname, '../tsconfig.example.json');
 const exampleDistDir = path.resolve(__dirname, '../example/dist');
+const examplePagesDir = path.resolve(__dirname, '../example/pages');
+const exampleAppJsonPath = path.resolve(__dirname, '../example/app.json');
 const baseCssPath = path.resolve(__dirname, '../packages/common/index.wxss');
 
 /** ts 文件转成 js 文件 */
@@ -126,5 +129,23 @@ const tasks = [
   return prev
 }, {})
 
+
+/** 启动文档，监听文件修改热更新文档 */
+tasks.buildExample = gulp.series(
+  cleaner(exampleDistDir),
+  gulp.parallel(
+    tsCompiler(exampleDistDir, exampleConfig),
+    lessCompiler(exampleDistDir),
+    staticCopier(exampleDistDir),
+    // 监听文件变化，打包到 dist 文件夹内
+    () => {
+      gulp.watch(`${src}/**/*.less`, lessCompiler(exampleDistDir));
+      gulp.watch(`${src}/**/*.wxml`, copier(exampleDistDir, 'wxml'));
+      gulp.watch(`${src}/**/*.wxs`, copier(exampleDistDir, 'wxs'));
+      gulp.watch(`${src}/**/*.ts`, tsCompiler(exampleDistDir, exampleConfig));
+      gulp.watch(`${src}/**/*.json`, copier(exampleDistDir, 'json'));
+    }
+  )
+)
 
 module.exports = tasks;
