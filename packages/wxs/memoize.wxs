@@ -1,0 +1,58 @@
+/**
+ * Simple memoize
+ * wxs 不支持 fn.apply，所以这个 memoize 最多只支持 2 个参数
+ */
+/* eslint-disable */
+
+/** 判断该值是否为原始类型。 */
+function isPrimitive(value) {
+  var type = typeof value;
+  return (
+    type === 'boolean' ||
+    type === 'number' ||
+    type === 'string' ||
+    type === 'undefined' ||
+    value === null
+  );
+}
+
+/** 模拟 js 的 call 方法 */
+function call(fn, args) {
+  if (args.length === 2) {
+    return fn(args[0], args[1]);
+  }
+
+  if (args.length === 1) {
+    return fn(args[0]);
+  }
+
+  return fn();
+}
+
+function serializer(args) {
+  if (args.length === 1 && isPrimitive(args[0])) {
+    return args[0];
+  }
+  var obj = {};
+  for (var i = 0; i < args.length; i++) {
+    obj['key' + i] = args[i];
+  }
+  return JSON.stringify(obj);
+}
+
+
+/** 模拟 js 的 apply 方法 */
+function memoize(fn) {
+  var cache = {};
+
+  return function() {
+    var key = serializer(arguments);
+    if (cache[key] === undefined) {
+      cache[key] = call(fn, arguments);
+    }
+
+    return cache[key];
+  };
+}
+
+module.exports = memoize;
