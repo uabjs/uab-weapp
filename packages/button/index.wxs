@@ -1,0 +1,41 @@
+/* eslint-disable */
+var style = require('../wxs/style.wxs');
+
+/** 基础样式风格 */
+function rootStyle(data) {
+  if (!data.color) {
+    return data.customStyle;
+  }
+
+  var properties = {
+    color: data.plain ? data.color : '#fff',
+    background: data.plain ? null : data.color,
+  }
+
+  // 当颜色为线性渐变时隐藏边框
+  if (data.color.indexOf('gradient') !== -1) {
+    properties.border = 0;
+  } else {
+    properties['border-color'] = data.color;
+  }
+
+  return style([properties, data.customStyle]);
+}
+
+/** 加载的颜色 */
+function loadingColor(data) {
+  if (data.plain) {
+    return data.color ? data.color : '#c9c9c9';
+  }
+
+  if (data.type === 'default') {
+    return '#c9c9c9';
+  }
+
+  return '#fff';
+}
+
+module.exports = {
+  rootStyle: rootStyle,
+  loadingColor: loadingColor,
+};
