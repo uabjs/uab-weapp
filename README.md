@@ -20,6 +20,7 @@ yarn run dev
 yarn run release:site
 ```
 ### 文档效果图
+![文档效果图](https://github.com/uabjs/uab-weapp/blob/main/docs/img/1.png?raw=true)
 
 
 ## 打包项目：
@@ -36,6 +37,8 @@ yarn run dev
 # 2. 用微信开发者工具打开 example 文件夹
 ```
 ### 微信小程序效果图
+![文档效果图](https://github.com/uabjs/uab-weapp/blob/main/docs/img/2.png?raw=true)
+![文档效果图](https://github.com/uabjs/uab-weapp/blob/main/docs/img/3.png?raw=true)
 
 
 
