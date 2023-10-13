@@ -1,0 +1,5 @@
+<uab-icon
+  name="{{ demoIcon }}"
+  size="32px"
+  custom-class="icon"
+/>

@@ -19,6 +19,7 @@ const exampleDistDir = path.resolve(__dirname, '../example/dist');
 const examplePagesDir = path.resolve(__dirname, '../example/pages');
 const exampleAppJsonPath = path.resolve(__dirname, '../example/app.json');
 const baseCssPath = path.resolve(__dirname, '../packages/common/index.wxss');
+const icons = path.resolve(__dirname, '../node_modules/@vant/icons');
 
 /** ts 文件转成 js 文件 */
 const tsCompiler = (dist, config) => function compileTs() {
@@ -33,15 +34,15 @@ const tsCompiler = (dist, config) => function compileTs() {
         insert.transform((contents, file) => {
           // 是打包到小程序文件夹的 dist 文件夹，并且是 demo 文件夹下面的文件走下面逻辑
           if (dist === exampleDistDir && file.path.includes(`${path.sep}demo${path.sep}`)) {
-            // 将ts文件里面的内容 x 替换成 xxx
-            // const iconConfig = '@vant/icons/src/config';
-            // contents = contents.replace(
-            //   iconConfig,
-            //   path.replace(
-            //     path.dirname(file.path),
-            //     `${exampleDistDir}/${iconConfig}`
-            //   ).replace(/\\/g, '/')
-            // )
+            // 将ts文件里面的内容 @vant/icons/src/config 替换成 '../../@vant/icons/src/config'
+            const iconConfig = '@vant/icons/src/config';
+            contents = contents.replace(
+              iconConfig,
+              path.relative(
+                path.dirname(file.path),
+                `${exampleDistDir}/${iconConfig}`
+              ).replace(/\\/g, '/')
+            )
           }
           return contents
         })
@@ -139,6 +140,11 @@ tasks.buildExample = gulp.series(
     tsCompiler(exampleDistDir, exampleConfig), // 打包到微信小程序 example/dist 文件夹内
     lessCompiler(exampleDistDir),
     staticCopier(exampleDistDir),
+    // 将 '../node_modules/@vant/icons' 下面的文件复制到 ../example/dist/@vant/icons
+    () =>
+      gulp
+        .src(`${icons}/**/*`)
+        .pipe(gulp.dest(`${exampleDistDir}/@vant/icons`)),
     // 拿到 example/app.json 需要显示的组件添加对应的 index.js 和 index.wxml 文件到 example/pages 文件夹下
     () => {
       const appJson = JSON.parse(fs.readFileSync(exampleAppJsonPath));

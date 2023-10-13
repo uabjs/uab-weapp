@@ -19,7 +19,7 @@ UabComponent({
         icon: String,
         classPrefix: {
             type: String,
-            value: 'uab-icon',
+            value: 'van-icon',
         },
         plain: Boolean,
         block: Boolean,
