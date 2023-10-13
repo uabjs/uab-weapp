@@ -36,6 +36,14 @@
     </view>
   </block>
   <block wx:else>
+    <uab-icon
+      wx:if="{{ icon }}"
+      size="1.2em"
+      name="{{ icon }}"
+      class-prefix="{{ classPrefix }}"
+      class="uab-button__icon"
+      custom-style="line-height: inherit;"
+    />
     <view class="uab-button__text">
       <slot />
     </view>

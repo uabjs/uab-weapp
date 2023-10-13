@@ -23,7 +23,7 @@ UabComponent({
     icon: String,  // 图标
     classPrefix: { // 图标类名前缀，同 Icon 组件的 class-prefix 属性
       type: String,
-      value: 'uab-icon',
+      value: 'van-icon',
     },
     plain: Boolean, // 是否为朴素按钮
     block: Boolean, // 是否为块级元素
