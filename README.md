@@ -10,8 +10,8 @@ cd uab-weapp
 # 安装依赖  (node版本：v16.20.xx，  yarn版本：1.22.19)
 yarn
 ```
-
-## 项目文档：
+## 项目文档
+[https://uabjs.github.io/uab-weapp](https://uabjs.github.io/uab-weapp)
 ```sh
 # 启动文档
 yarn run dev
