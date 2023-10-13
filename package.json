@@ -3,10 +3,19 @@
   "version": "1.0.0",
   "description": "一个微信小程序组件库",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "node build/dev.mjs",
+    "release": "sh build/release.sh",
+    "release:site": "vant-cli build-site && gh-pages -d site-dist --add",
     "build:lib": "yarn && npx gulp -f build/compiler.js --series buildEs"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uabjs/uab-weapp.git"
