@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Uab Weapp",
+  "usingComponents": {
+    "demo-home": "../../components/demo-home/index"
+  }
+}

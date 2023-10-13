@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/dashboard/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "Uab Weapp",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f8f8f8"
+  },
+  "usingComponents": {
+    "demo-block": "./components/demo-block/index"
+  }
+}

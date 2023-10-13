@@ -1,0 +1,18 @@
+<view class="demo-home">
+  <view
+    class="demo-home__title"
+  >
+    <image mode="aspectFit" class="demo-home__image" src="https://avatars.githubusercontent.com/u/73016681?s=100&v=4" />
+    <view class="demo-home__text">Uab Weapp</view>
+  </view>
+  <view class="demo-home__desc">
+    轻量、可靠的小程序 UI 组件库
+  </view>
+  <view
+    wx:for="{{ list }}"
+    wx:for-item="group"
+    wx:key="index"
+  >
+    <demo-home-nav group="{{ group }}" />
+  </view>
+</view>
