@@ -10,7 +10,7 @@ export default {
     versions: [{ label: '0.x', link: '/uab-weapp/0.x' }],
     title: 'Uab Weapp',
     description: '轻量、可靠的小程序 UI 组件库',
-    logo: 'https://img.yzcdn.cn/vant/logo.png',
+    logo: 'https://avatars.githubusercontent.com/u/73016681?s=200&v=4',
     simulator: { // 模拟器
       url: 'https://vant-contrib.gitee.io/vant/v2/mobile.html?weapp=1', // 使用 vant 网页模拟器地址
       routeMapper: (path) => {
@@ -20,7 +20,7 @@ export default {
     },
     links: [
       {
-        logo: 'https://b.yzcdn.cn/vant/logo/github.svg',
+        logo: 'https://avatars.githubusercontent.com/u/73016681?s=200&v=4',
         url: 'https://github.com/uabjs/uab-weapp.git',
       },
     ],
