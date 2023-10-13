@@ -1,12 +1,12 @@
 <wxs src="../wxs/utils.wxs" module="utils" />
 <wxs src="./index.wxs" module="computed" />
 
-<button 
+<button
   id="{{ id || buttonId }}"
   data-detail="{{ dataset }}"
   class="custom-class {{ utils.bem('button', [type, size, { block, round, plain, square, loading, disabled, hairline, unclickable: disabled || loading }]) }} {{ hairline ? 'uab-hairline--surround' : '' }}"
-  hover-class="{{ disabled || loading ? '' : 'uab-button--active hover-class' }}"
-  class="{{ lang }}"
+  hover-class="{{ disabled || loading ? '' : 'uab-button--active hover-class'}}"
+  lang="{{ lang }}"
   form-type="{{ formType }}"
   style="{{ computed.rootStyle({ plain, color, customStyle }) }}"
   open-type="{{ disabled || loading || (canIUseGetUserProfile && openType === 'getUserInfo') ? '' : openType }}"
