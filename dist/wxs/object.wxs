@@ -1,0 +1,14 @@
+/* eslint-disable */
+var REGEXP = getRegExp('{|}|"', 'g');
+
+/** 接受一个对象作为参数，返回该对象的所有键组成的数组。类似 object.keys */
+function keys(obj) {
+  return JSON.stringify(obj)
+    .replace(REGEXP, '')
+    .split(',')
+    .map(function(item) {
+      return item.split(':')[0];
+    });
+}
+
+module.exports.keys = keys;
