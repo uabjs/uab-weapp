@@ -9,6 +9,7 @@
       bind:tap="onClick"
     >
       {{ item.title }}
+      <van-icon name="arrow" custom-class="demo-home-nav__icon" />
     </view>
   </view>
 </view>
