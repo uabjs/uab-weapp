@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
 const less = require('gulp-less');
@@ -30,16 +31,17 @@ const tsCompiler = (dist, config) => function compileTs() {
     tsResult.js
       .pipe(
         insert.transform((contents, file) => {
-          // 打包到 dist 文件夹的路径存在 demo 的文件
+          // 是打包到小程序文件夹的 dist 文件夹，并且是 demo 文件夹下面的文件走下面逻辑
           if (dist === exampleDistDir && file.path.includes(`${path.sep}demo${path.sep}`)) {
-            const iconConfig = '@vant/icons/src/config';
-            contents = contents.replace(
-              iconConfig,
-              path.replace(
-                path.dirname(file.path),
-                `${exampleDistDir}/${iconConfig}`
-              ).replace(/\\/g, '/')
-            )
+            // 将ts文件里面的内容 x 替换成 xxx
+            // const iconConfig = '@vant/icons/src/config';
+            // contents = contents.replace(
+            //   iconConfig,
+            //   path.replace(
+            //     path.dirname(file.path),
+            //     `${exampleDistDir}/${iconConfig}`
+            //   ).replace(/\\/g, '/')
+            // )
           }
           return contents
         })
@@ -134,10 +136,50 @@ const tasks = [
 tasks.buildExample = gulp.series(
   cleaner(exampleDistDir),
   gulp.parallel(
-    tsCompiler(exampleDistDir, exampleConfig),
+    tsCompiler(exampleDistDir, exampleConfig), // 打包到微信小程序 example/dist 文件夹内
     lessCompiler(exampleDistDir),
     staticCopier(exampleDistDir),
-    // 监听文件变化，打包到 dist 文件夹内
+    // 拿到 example/app.json 需要显示的组件添加对应的 index.js 和 index.wxml 文件到 example/pages 文件夹下
+    () => {
+      const appJson = JSON.parse(fs.readFileSync(exampleAppJsonPath));
+      const excludePages = ['pages/dashboard/index'];
+      appJson.pages
+        .filter((page) => page.indexOf(excludePages) === -1) // 过滤掉 dashboard 文件，因为只有他不是组件
+        .forEach((path) => {
+          const component = path.replace(/(pages\/|\/index)/g, ''); // 取 "pages/button/index" 中的 button
+          const writeFiles = [
+            {
+              path: `${examplePagesDir}/${component}/index.js`,
+              contents: "import Page from '../../common/page';\n\nPage();",
+            },
+            {
+              path: `${examplePagesDir}/${component}/index.wxml`,
+              contents: `<uab-${component}-demo />`,
+            },
+            {
+              path: `${examplePagesDir}/${component}/index.json`,
+              contents: `{ "navigationBarTitleText": "${component}" }`,
+            },
+          ];
+          writeFiles.forEach((writeFile) => {
+            // 没有文件夹就先创建
+            if (!fs.existsSync(writeFile.path.slice(0, writeFile.path.lastIndexOf('/') + 1))) {
+              fs.mkdirSync(writeFile.path.slice(0, writeFile.path.lastIndexOf('/') + 1), { recursive: true });
+            }
+            // 写入
+            fs.access(writeFile.path, fs.constants.F_OK, (fileNotExists) => {
+              if (fileNotExists) {
+                fs.writeFile(writeFile.path, writeFile.contents, (err) => {
+                  if (err) {
+                    throw err;
+                  }
+                });
+              }
+            });
+          });
+        });
+    },
+    // 监听 packages 内组件文件变化，打包到 example/dist 微信小程序demo文件夹内，作用：提供给小程序使用
     () => {
       gulp.watch(`${src}/**/*.less`, lessCompiler(exampleDistDir));
       gulp.watch(`${src}/**/*.wxml`, copier(exampleDistDir, 'wxml'));
