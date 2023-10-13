@@ -1,0 +1,22 @@
+<wxs src="./index.wxs" module="computed" />
+
+<view
+  class="{{ computed.rootClass({ classPrefix, name }) }}"
+  style="{{ computed.rootStyle({ customStyle, color, size }) }}"
+  bindtap="onClick"
+>
+  <!-- 右上角红点/数字 -->
+  <uab-info
+    wx:if="{{ info !== null || dot }}"
+    dot="{{ dot }}"
+    info="{{ info }}"
+    custom-class="uab-icon__info info-class"
+  />
+  <!-- 显示 iocn -->
+  <image
+    wx:if="{{ computed.isImage(name) }}"
+    src="{{ name }}"
+    mode="aspectFit"
+    class="uab-icon__image"
+  />
+</view>

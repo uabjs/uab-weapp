@@ -2511,6 +2511,11 @@
     eslint-plugin-import "^2.26.0"
     eslint-plugin-vue "^9.1.1"
 
+"@vant/icons@^3.0.0":
+  version "3.0.2"
+  resolved "https://registry.npmmirror.com/@vant/icons/-/icons-3.0.2.tgz#87f2dd74f0071d305b610d29f9442b89d346d05e"
+  integrity sha512-4OlRVMd0uiDtD9hgSISZW8hB95vU0fFtc41tQchRIyiXkR0tS+DydZOLb8/bQkithrNWhW7Uud38MbKjlJ9lJw==
+
 "@vant/markdown-vetur@^2.3.0":
   version "2.3.0"
   resolved "https://registry.npmmirror.com/@vant/markdown-vetur/-/markdown-vetur-2.3.0.tgz#7284d4c2c584b53dd4bf2c8dea160ad97c9d7ff1"
