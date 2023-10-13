@@ -106,7 +106,7 @@ yarn add -D miniprogram-api-typings
 // 通过 npm 安装
 // app.json
 "usingComponents": {
-  "van-button": "@uab/weapp/button/index"
+  "uab-button": "@uab/weapp/button/index"
 }
 ```
 
@@ -114,7 +114,7 @@ yarn add -D miniprogram-api-typings
 // 通过下载源码使用 es6版本
 // app.json
 "usingComponents": {
-  "van-button": "path/to/@uab/weapp/dist/button/index"
+  "uab-button": "path/to/@uab/weapp/dist/button/index"
 }
 ```
 
@@ -122,7 +122,7 @@ yarn add -D miniprogram-api-typings
 // 通过下载源码使用 es5版本
 // app.json
 "usingComponents": {
-  "van-button": "path/to/@uab/weapp/lib/button/index"
+  "uab-button": "path/to/@uab/weapp/lib/button/index"
 }
 ```
 
@@ -131,7 +131,7 @@ yarn add -D miniprogram-api-typings
 引入组件后，可以在 wxml 中直接使用组件
 
 ```xml
-<van-button type="primary">按钮</van-button>
+<uab-button type="primary">按钮</uab-button>
 ```
 
 ## 其他
