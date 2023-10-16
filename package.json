@@ -1,6 +1,6 @@
 {
   "name": "@uab/weapp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "一个微信小程序组件库",
   "main": "index.js",
   "publishConfig": {
