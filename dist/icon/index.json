@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "uab-icon": "../icon/index"
+    "uab-info": "../info/index"
   }
 }

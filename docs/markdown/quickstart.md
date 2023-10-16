@@ -16,9 +16,6 @@ npm i @uab/weapp -S --production
 
 # 通过 yarn 安装
 yarn add @uab/weapp --production
-
-# 安装 0.x 版本
-npm i uab-weapp -S --production
 ```
 
 ### 步骤二 修改 app.json
@@ -89,7 +86,7 @@ yarn add -D miniprogram-api-typings
 
 ### 示例工程
 
-我们提供了一个[示例工程](https://github.com/uab-ui/uab-demo)，示例工程会帮助你了解如下内容：
+我们提供了一个[示例工程](https://github.com/vant-ui/vant-demo)，示例工程会帮助你了解如下内容：
 
 - 基于 Uab Weapp 搭建小程序应用
 - 样式覆盖方案
@@ -141,7 +138,7 @@ yarn add -D miniprogram-api-typings
 ```bash
 
 # 将项目克隆到本地
-git clone git@github.com:youzan/uab-weapp.git
+git clone https://github.com/uabjs/uab-weapp.git
 
 # 安装项目依赖
 cd uab-weapp && npm install
