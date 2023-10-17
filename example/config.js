@@ -12,5 +12,15 @@ export default [
         title: 'Icon 图标',
       },
     ]
+  },
+  {
+    groupName: '反馈组件',
+    icon: 'passed',
+    list: [
+      {
+        path: '/loading',
+        title: 'Loading 加载',
+      },
+    ]
   }
 ]

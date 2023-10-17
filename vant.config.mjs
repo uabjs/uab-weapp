@@ -50,6 +50,15 @@ export default {
             title: 'Icon 图标',
           },
         ]
+      },
+      {
+        title: '反馈组件',
+        items: [
+          {
+            path: 'loading',
+            title: 'Loading 加载',
+          },
+        ]
       }
     ]
   }
