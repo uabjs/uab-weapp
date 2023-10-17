@@ -20,8 +20,8 @@ export default {
     },
     links: [
       {
-        logo: 'https://avatars.githubusercontent.com/u/73016681?s=200&v=4',
-        url: 'https://github.com/uabjs/uab-weapp.git',
+        logo: 'https://b.yzcdn.cn/vant/logo/github.svg',
+        url: 'https://github.com/uabjs/uab-weapp',
       },
     ],
     nav: [
