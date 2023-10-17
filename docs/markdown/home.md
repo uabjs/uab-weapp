@@ -1,6 +1,6 @@
-<div class="uab-doc-card">
-  <div class="uab-doc-intro">
-    <img class="uab-doc-intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://avatars.githubusercontent.com/u/73016681?s=200&v=4">
+<div class="van-doc-card">
+  <div class="van-doc-intro">
+    <img class="van-doc-intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://avatars.githubusercontent.com/u/73016681?s=200&v=4">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">Uab Weapp</h2>
     <p>轻量、可靠的小程序 UI 组件库</p>
   </div>
