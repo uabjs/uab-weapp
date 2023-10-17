@@ -2,7 +2,8 @@
   "pages": [
     "pages/dashboard/index",
     "pages/button/index",
-    "pages/icon/index"
+    "pages/icon/index",
+    "pages/loading/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#f8f8f8",
@@ -14,6 +15,7 @@
   "usingComponents": {
     "demo-block": "./components/demo-block/index",
     "uab-button-demo": "./dist/button/demo/index",
-    "uab-icon-demo": "./dist/icon/demo/index"
+    "uab-icon-demo": "./dist/icon/demo/index",
+    "uab-loading-demo": "./dist/loading/demo/index"
   }
 }
